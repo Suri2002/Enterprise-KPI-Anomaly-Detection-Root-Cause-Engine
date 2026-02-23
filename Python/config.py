@@ -30,7 +30,7 @@ SENSITIVITY_THRESHOLDS = {
 DEFAULT_SENSITIVITY = "medium"
 
 # Minimum contribution % to report as root cause driver
-MIN_CONTRIBUTION_PERCENT = 5.0
+MIN_CONTRIBUTION_PERCENT = 2.0
 
 # Rolling window size for statistical analysis (days)
 ROLLING_WINDOW_DAYS = 28
