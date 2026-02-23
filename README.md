@@ -1,127 +1,87 @@
-##🚀 Enterprise KPI Anomaly Detection & Root Cause Engine
+🚀 Enterprise KPI Anomaly Detection & Root Cause Analytics
 
-A complete end-to-end analytics system that automatically monitors business KPIs, detects anomalies using statistical methods, identifies root causes, and visualizes insights through an interactive Power BI dashboard.
+SQL Server | Python | Power BI
 
-This project simulates a real-world enterprise analytics solution used by data teams and business leaders to monitor performance and detect unusual trends instantly.
+End-to-end enterprise analytics project demonstrating modern data engineering, anomaly detection, and executive dashboarding using SQL Server, Python, and Power BI.
 
-##🏗️ System Architecture
-```text
-SQL Server Data Warehouse
-        ↓
-Python Anomaly Detection Engine
-        ↓
-Root Cause Analysis + Logging
-        ↓
-Power BI Interactive Dashboard
-```
-##🎯 Project Objective
+This project simulates a real enterprise KPI monitoring system used by leadership to detect anomalies, identify root causes, and make data-driven decisions in real time.
 
-Build an automated analytics system that:
+📌 Project Overview
 
-Monitors Revenue, Profit, and Margin
+This solution builds a centralized analytics platform that:
 
-Detects anomalies using statistical methods
+Designs a star schema data warehouse in SQL Server
 
-Identifies root cause drivers (store, product, region)
+Detects KPI anomalies using Python statistical modeling
 
-Logs anomalies automatically
+Performs root cause analysis across business dimensions
 
-Displays insights in an executive dashboard
+Centralizes KPI logic in SQL views
 
-##💾 Part 1: SQL Server Data Warehouse
-Database Design (Star Schema)
+Visualizes insights in executive Power BI dashboards
 
-Built using Kimball methodology.
+💼 What This Project Demonstrates
+
+⭐ Star schema design for enterprise analytics (fact + dimension modeling)
+
+🤖 Automated anomaly detection using statistical methods
+
+🔎 Root cause analysis across store, product, and region
+
+🧠 Centralized KPI logic using SQL views
+
+🔗 Python pipeline integration with SQL Server
+
+📊 Executive-ready interactive Power BI dashboard
+
+📁 Clean repository structure and documentation
+
+🏗 Architecture
+
+SQL Server → Python Detection Engine → Root Cause Logging → Power BI Dashboard
+
+SQL Server stores KPI and anomaly data
+
+Python pipeline detects anomalies & logs root causes
+
+Power BI connects to SQL views for visualization
+
+📄 More details: docs/architecture.md
+
+🗄 Data Model
+Fact Tables
+
+fact_kpi_metrics → Daily KPI metrics (revenue, profit, margin)
+
+fact_anomalies → Detected anomalies with severity & deviation
+
+fact_root_causes → Root cause contribution by store/product/region
 
 Dimension Tables
 
-Regions (5)
+dim_date
 
-Stores (50)
+dim_regions
 
-Products (100)
+dim_stores
 
-Fact Tables
+dim_products
 
-KPI Metrics (~45,000 records, 90 days)
+Dataset Details
 
-Anomaly Logs
+90 days of data
 
-Root Cause Logs
+50 stores
 
-Additional Components
+100 products
 
-7 analytical views
+~45,000 records
 
-5 stored procedures
+📊 KPI & Analytics Logic (SQL Views)
 
-Indexed relationships
+All KPIs are defined in SQL Server views to maintain a single source of truth.
 
-Realistic anomaly-injected data
-
-✔ Production-style mini data warehouse ready for analytics.
-
-##🐍 Part 2: Python Anomaly Detection Engine
-Tech Used
-
-Python
-
-pandas
-
-numpy
-
-SQL Server (pyodbc)
-
-Detection Method
-
-Rolling 28-day baseline
-
-Z-score statistical detection
-
-Threshold: 2.5 standard deviations
-
-Severity levels: High, Medium, Low
-
-Pipeline Steps
-
-Load KPI data from SQL Server
-
-Calculate rolling mean & standard deviation
-
-Detect anomalies
-
-Identify root causes (store/product/region contribution)
-
-Log anomalies back to database
-
-Performance
-
-Processes ~45K records
-
-Runs in under 10 seconds
-
-Detects and explains anomalies automatically
-
-✔ Not only detects issues — explains why they happened.
-
-##📊 Part 3: Power BI Dashboard (Final Output)
-
-This dashboard provides executive-level insights into business KPIs and anomalies.
-
-According to the dashboard view:
-
-Total Revenue: $14.7M
-
-Total Profit: $4.3M
-
-Avg Margin: 29.6%
-
-Total Anomalies: 5 
-
-KPI_Anomaly_Detection_Dashboard…
-
-##📌 Dashboard Components
-🔹 KPI Cards (Top Section)
+Included KPIs
 
 Total Revenue
 
@@ -129,195 +89,86 @@ Total Profit
 
 Average Margin %
 
-Total Anomalies
+Daily KPI Trends
 
-Quick executive summary of business performance.
+KPI by Region
 
-🔹 Donut Chart — Anomalies by Severity
+KPI by Store
 
-Shows anomaly distribution:
+KPI by Product
 
-Medium: 80%
+Anomaly Count by Severity
 
-High: 20%
+Root Cause Contribution %
 
-Helps identify risk level quickly.
+📍 Location: SQL/kpi_views.sql
 
-🔹 Bar Chart — Anomalies by KPI & Severity
+🤖 Python Anomaly Detection Engine
 
-Breakdown of anomalies across:
+Automated statistical anomaly detection pipeline integrated with SQL Server.
 
-Revenue
+Detection Method
 
-Profit
+Rolling 28-day baseline
 
-Margin
+Z-score detection
 
-Severity level
+Threshold: 2.5 standard deviations
 
-Used to identify which KPI is most impacted.
+Severity Classification
 
-🔹 Revenue Trend Chart
+High
 
-Displays:
+Medium
 
-Revenue trend over time
+Low
 
-KPI comparison (Revenue, Profit, Margin)
+Pipeline Flow
 
-Date-based anomaly tracking
+Load KPI data from SQL Server
 
-Helps detect spikes, drops, and trends visually.
+Calculate rolling mean & standard deviation
 
-🔹 Root Cause Drivers Treemap
+Detect anomalies using Z-score
 
-Shows contribution of:
+Identify root cause drivers
 
-Regions
+Log anomalies into database
 
-Stores
+Output
 
-Products
+Detects anomalies in <10 seconds
 
-Example insights:
+Logs top contributing stores/products/regions
 
-Which store drove anomaly
+Fully automated detection system
 
-Which region contributed most
+📍 Location: Python/
 
-Which product impacted KPI
+📈 Power BI Executive Dashboard
 
-This allows instant root cause visibility.
+Interactive executive dashboard built using SQL Server views.
 
-🔹 Interactive Filters (Slicers)
+Dashboard Highlights
 
-Users can filter dashboard by:
+KPI Cards: Revenue, Profit, Margin, Total Anomalies
 
-Date range
+Donut Chart: Anomalies by Severity
 
-KPI type (Revenue, Profit, Margin)
+Bar Chart: Anomalies by KPI type
 
-All visuals update dynamically.
+Trend Chart: KPI trends over time
 
-##🔄 End-to-End Workflow
+Treemap: Root cause drivers (region/store/product)
 
-SQL Server stores KPI data
+Interactive slicers: Date & KPI type
 
-Python pipeline runs
+Insights Provided
 
-Detects anomalies statistically
+Detect KPI spikes and drops instantly
 
-Finds root causes
+Identify root cause store/product/region
 
-Logs results in database
+Filter by date, KPI, severity
 
-Power BI refreshes
-
-Dashboard shows insights
-
-##💡 Business Value
-Before This System
-
-Manual KPI monitoring
-
-Late anomaly detection
-
-Unknown root causes
-
-Slow decision making
-
-After This System
-
-Automated detection in seconds
-
-Instant root cause identification
-
-Real-time KPI monitoring
-
-Executive-ready dashboard
-
-Example:
-
-Revenue spike detected → System shows Store_043 caused 32% of increase.
-
-##🛠 Technologies Used
-Database
-
-SQL Server
-
-T-SQL
-
-Star Schema Modeling
-
-Analytics
-
-Python
-
-pandas
-
-numpy
-
-Statistical Z-score detection
-
-Visualization
-
-Power BI
-
-DAX measures
-
-Interactive filtering
-
-Treemap & KPI cards
-
-##📈 System Capabilities
-Feature	Value
-KPIs monitored	3
-Stores analyzed	50
-Products analyzed	100
-Data processed	~45K records
-Detection time	<10 sec
-Detection method	Z-score
-Dashboard	Interactive Power BI
-##🎯 Skills Demonstrated
-
-Data Engineering
-
-Data Warehousing (Star Schema)
-
-Python Analytics Automation
-
-Statistical Modeling
-
-Root Cause Analysis
-
-Power BI Dashboarding
-
-Business Intelligence Engineering
-
-End-to-End Analytics Pipeline
-
-##🚀 Future Enhancements
-
-Email/Slack anomaly alerts
-
-Machine learning anomaly detection
-
-Real-time streaming pipeline
-
-Azure cloud deployment
-
-Forecasting integration
-
-REST API for anomaly data
-
-##👨‍💻 Author
-
-Venkata Surya Prakash Gunji
-MS in Information Technology – ASU
-Data Analytics | BI Engineering | Data Engineering
-
-##⭐ Final Result
-
-A complete enterprise-grade KPI monitoring and anomaly detection system that automatically identifies:
-
-What went wrong → Why it happened → Where it happened → Visualized instantly
+Real-time executive KPI monitoring
