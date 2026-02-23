@@ -1,174 +1,127 @@
-🚀 Enterprise KPI Anomaly Detection & Root Cause Analytics
+# Enterprise KPI Anomaly Detection & Root Cause Analytics
+**SQL Server | Python | Power BI**
 
-SQL Server | Python | Power BI
+End-to-end enterprise analytics project demonstrating a star-schema warehouse in SQL Server, automated anomaly detection in Python, and executive dashboards in Power BI.
 
-End-to-end enterprise analytics project demonstrating modern data engineering, anomaly detection, and executive dashboarding using SQL Server, Python, and Power BI.
+---
 
-This project simulates a real enterprise KPI monitoring system used by leadership to detect anomalies, identify root causes, and make data-driven decisions in real time.
+## What this project demonstrates
+- Star schema design for analytics (facts + dimensions)
+- Automated anomaly detection using statistical methods
+- Root cause analysis across store, product, and region
+- Centralized KPI logic using SQL views (single source of truth)
+- Python pipeline integration with SQL Server
+- Executive-ready interactive Power BI dashboard
+- Clean repo structure + documentation
 
-📌 Project Overview
+---
 
-This solution builds a centralized analytics platform that:
+## Architecture
+**SQL Server → Python Detection Engine → Root Cause Logging → Power BI Dashboard**
 
-Designs a star schema data warehouse in SQL Server
+- SQL Server stores KPI and anomaly data
+- Python pipeline detects anomalies and logs root causes
+- Power BI connects to SQL views for visualization
 
-Detects KPI anomalies using Python statistical modeling
+More detail: **[docs/architecture.md](docs/architecture.md)**
 
-Performs root cause analysis across business dimensions
+---
 
-Centralizes KPI logic in SQL views
+## Data model
 
-Visualizes insights in executive Power BI dashboards
+### Fact tables
+- **fact_kpi_metrics** — Daily KPI metrics (revenue, profit, margin)
+- **fact_anomalies** — Detected anomalies with severity and deviation
+- **fact_root_causes** — Root-cause contribution by store/product/region
 
-💼 What This Project Demonstrates
+### Dimension tables
+- **dim_date**
+- **dim_regions**
+- **dim_stores**
+- **dim_products**
 
-⭐ Star schema design for enterprise analytics (fact + dimension modeling)
+### Dataset
+- 90 days of data
+- 50 stores
+- 100 products
+- ~45,000 records
 
-🤖 Automated anomaly detection using statistical methods
+---
 
-🔎 Root cause analysis across store, product, and region
+## KPI & analytics logic (SQL views)
+KPIs are defined in SQL Server views to maintain a **single source of truth**.
 
-🧠 Centralized KPI logic using SQL views
+**Included KPIs**
+- Total Revenue
+- Total Profit
+- Avg Margin %
+- Daily KPI Trends
+- KPI by Region
+- KPI by Store
+- KPI by Product
+- Anomaly Count by Severity
+- Root Cause Contribution %
 
-🔗 Python pipeline integration with SQL Server
+Location: **SQL/kpi_views.sql**
 
-📊 Executive-ready interactive Power BI dashboard
+---
 
-📁 Clean repository structure and documentation
+## Python anomaly detection engine
+Automated statistical anomaly detection pipeline.
 
-🏗 Architecture
+### Detection method
+- Rolling 28-day baseline
+- Z-score detection
+- Threshold: 2.5 standard deviations
 
-SQL Server → Python Detection Engine → Root Cause Logging → Power BI Dashboard
+### Severity classification
+- High
+- Medium
+- Low
 
-SQL Server stores KPI and anomaly data
+### Pipeline flow
+1. Load KPI data from SQL Server
+2. Calculate rolling mean and standard deviation
+3. Detect anomalies (Z-score)
+4. Identify root-cause drivers
+5. Log anomalies to database
 
-Python pipeline detects anomalies & logs root causes
+### Output
+- Detects anomalies in **< 10 seconds**
+- Logs top contributing stores/products/regions
+- Fully automated detection system
 
-Power BI connects to SQL views for visualization
+Location: **Python/**
 
-📄 More details: docs/architecture.md
+---
 
-🗄 Data Model
-Fact Tables
-
-fact_kpi_metrics → Daily KPI metrics (revenue, profit, margin)
-
-fact_anomalies → Detected anomalies with severity & deviation
-
-fact_root_causes → Root cause contribution by store/product/region
-
-Dimension Tables
-
-dim_date
-
-dim_regions
-
-dim_stores
-
-dim_products
-
-Dataset Details
-
-90 days of data
-
-50 stores
-
-100 products
-
-~45,000 records
-
-📊 KPI & Analytics Logic (SQL Views)
-
-All KPIs are defined in SQL Server views to maintain a single source of truth.
-
-Included KPIs
-
-Total Revenue
-
-Total Profit
-
-Average Margin %
-
-Daily KPI Trends
-
-KPI by Region
-
-KPI by Store
-
-KPI by Product
-
-Anomaly Count by Severity
-
-Root Cause Contribution %
-
-📍 Location: SQL/kpi_views.sql
-
-🤖 Python Anomaly Detection Engine
-
-Automated statistical anomaly detection pipeline integrated with SQL Server.
-
-Detection Method
-
-Rolling 28-day baseline
-
-Z-score detection
-
-Threshold: 2.5 standard deviations
-
-Severity Classification
-
-High
-
-Medium
-
-Low
-
-Pipeline Flow
-
-Load KPI data from SQL Server
-
-Calculate rolling mean & standard deviation
-
-Detect anomalies using Z-score
-
-Identify root cause drivers
-
-Log anomalies into database
-
-Output
-
-Detects anomalies in <10 seconds
-
-Logs top contributing stores/products/regions
-
-Fully automated detection system
-
-📍 Location: Python/
-
-📈 Power BI Executive Dashboard
-
+## Power BI dashboard
 Interactive executive dashboard built using SQL Server views.
 
-Dashboard Highlights
+### Dashboard highlights
+- KPI Cards: Revenue, Profit, Margin, Total Anomalies
+- Donut Chart: Anomalies by Severity
+- Bar Chart: Anomalies by KPI type
+- Trend Chart: KPI trends over time
+- Treemap: Root-cause drivers (region/store/product)
+- Interactive slicers: Date and KPI type
 
-KPI Cards: Revenue, Profit, Margin, Total Anomalies
+### Insights provided
+- Detect KPI spikes/drops instantly
+- Identify which store/product/region caused the anomaly
+- Filter by date, KPI, severity
+- Executive-level KPI monitoring
 
-Donut Chart: Anomalies by Severity
+Screenshots: **screenshots/**
 
-Bar Chart: Anomalies by KPI type
+---
 
-Trend Chart: KPI trends over time
+## How to run (rebuild from scratch)
 
-Treemap: Root cause drivers (region/store/product)
+### 1) Create database
+Create a database named:
+- **AnomalyDetectionDB**
 
-Interactive slicers: Date & KPI type
-
-Insights Provided
-
-Detect KPI spikes and drops instantly
-
-Identify root cause store/product/region
-
-Filter by date, KPI, severity
-
-Real-time executive KPI monitoring
+### 2) Run schema
+```sql
+-- SQL/schema.sql
