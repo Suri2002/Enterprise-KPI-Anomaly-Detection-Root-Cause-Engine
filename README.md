@@ -1,10 +1,11 @@
-🚀 Enterprise KPI Anomaly Detection & Root Cause Engine
+##🚀 Enterprise KPI Anomaly Detection & Root Cause Engine
 
 A complete end-to-end analytics system that automatically monitors business KPIs, detects anomalies using statistical methods, identifies root causes, and visualizes insights through an interactive Power BI dashboard.
 
 This project simulates a real-world enterprise analytics solution used by data teams and business leaders to monitor performance and detect unusual trends instantly.
 
-🏗️ System Architecture
+##🏗️ System Architecture
+```text
 SQL Server Data Warehouse
         ↓
 Python Anomaly Detection Engine
@@ -12,7 +13,8 @@ Python Anomaly Detection Engine
 Root Cause Analysis + Logging
         ↓
 Power BI Interactive Dashboard
-🎯 Project Objective
+```
+##🎯 Project Objective
 
 Build an automated analytics system that:
 
@@ -26,7 +28,7 @@ Logs anomalies automatically
 
 Displays insights in an executive dashboard
 
-💾 Part 1: SQL Server Data Warehouse
+##💾 Part 1: SQL Server Data Warehouse
 Database Design (Star Schema)
 
 Built using Kimball methodology.
@@ -59,7 +61,7 @@ Realistic anomaly-injected data
 
 ✔ Production-style mini data warehouse ready for analytics.
 
-🐍 Part 2: Python Anomaly Detection Engine
+##🐍 Part 2: Python Anomaly Detection Engine
 Tech Used
 
 Python
@@ -102,7 +104,7 @@ Detects and explains anomalies automatically
 
 ✔ Not only detects issues — explains why they happened.
 
-📊 Part 3: Power BI Dashboard (Final Output)
+##📊 Part 3: Power BI Dashboard (Final Output)
 
 This dashboard provides executive-level insights into business KPIs and anomalies.
 
@@ -118,7 +120,7 @@ Total Anomalies: 5
 
 KPI_Anomaly_Detection_Dashboard…
 
-📌 Dashboard Components
+##📌 Dashboard Components
 🔹 KPI Cards (Top Section)
 
 Total Revenue
@@ -197,7 +199,7 @@ KPI type (Revenue, Profit, Margin)
 
 All visuals update dynamically.
 
-🔄 End-to-End Workflow
+##🔄 End-to-End Workflow
 
 SQL Server stores KPI data
 
@@ -213,7 +215,7 @@ Power BI refreshes
 
 Dashboard shows insights
 
-💡 Business Value
+##💡 Business Value
 Before This System
 
 Manual KPI monitoring
@@ -238,7 +240,7 @@ Example:
 
 Revenue spike detected → System shows Store_043 caused 32% of increase.
 
-🛠 Technologies Used
+##🛠 Technologies Used
 Database
 
 SQL Server
@@ -267,7 +269,7 @@ Interactive filtering
 
 Treemap & KPI cards
 
-📈 System Capabilities
+##📈 System Capabilities
 Feature	Value
 KPIs monitored	3
 Stores analyzed	50
@@ -276,7 +278,7 @@ Data processed	~45K records
 Detection time	<10 sec
 Detection method	Z-score
 Dashboard	Interactive Power BI
-🎯 Skills Demonstrated
+##🎯 Skills Demonstrated
 
 Data Engineering
 
@@ -294,7 +296,7 @@ Business Intelligence Engineering
 
 End-to-End Analytics Pipeline
 
-🚀 Future Enhancements
+##🚀 Future Enhancements
 
 Email/Slack anomaly alerts
 
@@ -308,13 +310,13 @@ Forecasting integration
 
 REST API for anomaly data
 
-👨‍💻 Author
+##👨‍💻 Author
 
 Venkata Surya Prakash Gunji
 MS in Information Technology – ASU
 Data Analytics | BI Engineering | Data Engineering
 
-⭐ Final Result
+##⭐ Final Result
 
 A complete enterprise-grade KPI monitoring and anomaly detection system that automatically identifies:
 
