@@ -152,8 +152,55 @@ Run:
 ### 5) Run Python pipeline
 ```bash
 python Python/main_pipeline.py
+```
+## Power BI
 
+### File
+- `PowerBI/dashboard.pbix`
 
+### Connection
+- Connect Power BI to **SQL Server**
+- Use the **SQL views** and anomaly tables as the reporting layer:
+  - KPI views (single source of truth)
+  - `fact_anomalies` (anomaly events)
+  - `fact_root_causes` (top contributors)
+
+### Recommended visuals
+- KPI cards: Revenue, Profit, Margin, Total Anomalies
+- Severity distribution: donut chart
+- KPI anomaly breakdown: bar chart (by KPI type)
+- Trends: line chart with date slicer
+- Root cause: treemap (region/store/product)
+- Slicers: Date range, KPI type, severity
+
+---
+
+## Tools & technologies
+
+### Database
+- SQL Server
+- T-SQL
+- Star schema modeling
+
+### Analytics
+- Python
+- pandas
+- numpy
+- Statistical modeling (Z-score)
+
+### Visualization
+- Power BI
+- DAX
+- Interactive dashboard design
+
+### Other
+- GitHub
+- VS Code
+
+---
+
+## Repository structure
+```text
 ├── SQL/
 │   ├── schema.sql
 │   ├── seed_data.sql
@@ -174,3 +221,32 @@ python Python/main_pipeline.py
 ├── docs/
 │   └── architecture.md
 └── README.md
+```
+## Business value
+
+### Before
+- Manual KPI monitoring
+- Delayed anomaly detection
+- Root causes unclear
+
+### After
+- Automated anomaly detection in seconds
+- Immediate root-cause attribution (store/product/region)
+- Executive-ready KPI monitoring dashboard
+
+---
+
+## Future enhancements
+- Email/Slack anomaly alerts
+- ML-based detection (Isolation Forest / Prophet / LSTM)
+- Real-time streaming pipeline
+- Azure deployment
+- Forecasting integration
+- REST API for anomaly access
+
+---
+
+## Author
+**Venkata Surya Prakash Gunji**  
+MS in Information Technology — Arizona State University  
+Data Analytics | BI Engineering | Data Engineering
